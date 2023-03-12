@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 
 app.use('/routers',router)
  
-mongoose.connect('mongodb://localhost:27017/k',{
+mongoose.connect('mongodb://host.docker.internal:27017/k',{
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(()=> console.log("Database Connected"))
