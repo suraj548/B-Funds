@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const app = express();
 const router = require('./router/router')
+const authrouter = require('./auth/authRoutes')
 // const dotEnv = require('dotenv').config()
 var cors = require('cors');
 
@@ -20,8 +21,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}))
 
 app.use('/routers',router)
- 
-mongoose.connect('mongodb://host.docker.internal:27017/k',{
+app.use('/routers',authrouter)
+mongoose.connect('mongodb://localhost:27017/k',{
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(()=> console.log("Database Connected"))
